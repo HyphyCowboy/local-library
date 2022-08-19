@@ -16,9 +16,7 @@ function getBooksBorrowedCount(books) {
 
 function getMostCommonGenres(books) {
   let genreCount = books.reduce((genreCount, book) => {
-    if (!genreCount.hasOwnProperty(book.genre)) {
-      genreCount[book.genre] = 1;
-    } else genreCount[book.genre]++;
+    genreCount.hasOwnProperty (book.genre)? genreCount[book.genre]++ : genreCount[book.genre] = 1;
     return genreCount;
   }, {});
   return Object.keys(genreCount)

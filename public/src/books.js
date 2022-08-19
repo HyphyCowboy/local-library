@@ -28,24 +28,14 @@ function partitionBooksByBorrowedStatus(books) {
   );
 }
 
-function getBorrowersForBook(book, accounts) {
-let result = []
-  let borrowers = book.borrows  
-  borrowers.forEach( borrow => {
-    let account = accounts.find( account => account.id === borrow.id )
-    let obj = account
-    obj[ 'returned' ] =  borrow.returned
-    result.push(obj)
+  function getBorrowersForBook(book, accounts) {
+ return book.borrows
+  .slice(0, 10)
+  .map((borrow) => {
+   let account = accounts.find((account) => account.id === borrow.id);
+   return { ...borrow, ...account };
   })
-  return result.slice(0,10)
 }
-// {
-//  return book.borrows
-//   .map((borrow) => {
-//    let account = accounts.find((account) => account.id === borrow.id);
-//    return { ...borrow, ...account };
-//   })
-//   .slice(0, 10);
 
 module.exports = {
   findAuthorById,

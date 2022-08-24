@@ -1,10 +1,16 @@
-function findAuthorById(authors, id) {
-  return authors.find((author) => author.id === id);
+function findById(array, id){
+  return array.find((object) => object.id === id);
 }
 
-function findBookById(books, id) {
-  return books.find((book) => book.id === id);
+function findAuthorById(authors, id) {
+return findById(authors, id)
 }
+//   return authors.find((author) => author.id === id);
+// }
+
+// function findBookById(books, id) {
+// //   return books.find((book) => book.id === id);
+// // }
 
 function partitionBooksByBorrowedStatus(books) {
   // let borrowed = []
@@ -39,7 +45,7 @@ function partitionBooksByBorrowedStatus(books) {
 
 module.exports = {
   findAuthorById,
-  findBookById,
+  findBookById: findById,
   partitionBooksByBorrowedStatus,
   getBorrowersForBook,
 };
